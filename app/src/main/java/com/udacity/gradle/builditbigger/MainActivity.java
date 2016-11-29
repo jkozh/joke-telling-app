@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.JokesFactory;
 import com.julia.android.jokesviewer.JokesViewerActivity;
 
 import static com.julia.android.jokesviewer.JokesViewerActivity.EXTRA_JOKE;
@@ -45,13 +44,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        // Retrieve a joke from the Java Library
-        String joke = JokesFactory.getRandomJoke();
 
-        // Pass the joke from the Java Library to the Android Library
-        Intent sendIntent = new Intent(this, JokesViewerActivity.class);
-        sendIntent.putExtra(EXTRA_JOKE, joke);
-        startActivity(sendIntent);
+        new FetchJokeTask(new FetchJokeTask.Listener() {
+
+            @Override
+            public void onJokeLoaded(String joke) {
+                // Pass the joke from the Java Library to the Android Library
+                Intent sendIntent = new Intent(getApplicationContext(), JokesViewerActivity.class);
+                sendIntent.putExtra(EXTRA_JOKE, joke);
+                startActivity(sendIntent);
+            }
+
+        }).execute();
+
     }
 
 }

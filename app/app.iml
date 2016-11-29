@@ -158,6 +158,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-25.0.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-25.0.1" level="project" />
+    <orderEntry type="module" module-name="jokesviewer" exported="" />
     <orderEntry type="module" module-name="jokes-lib" exported="" />
     <orderEntry type="library" exported="" name="android-android-25" level="project" />
   </component>

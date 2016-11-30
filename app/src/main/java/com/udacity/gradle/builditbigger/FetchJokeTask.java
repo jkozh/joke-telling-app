@@ -10,12 +10,12 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
-public class FetchJokeTask extends AsyncTask<Void, Void, String> {
+class FetchJokeTask extends AsyncTask<Void, Void, String> {
 
     private static MyApi myApiService = null;
     private final Listener mListener;
 
-    public FetchJokeTask(Listener mListener) {
+    FetchJokeTask(Listener mListener) {
         this.mListener = mListener;
     }
 
@@ -39,7 +39,6 @@ public class FetchJokeTask extends AsyncTask<Void, Void, String> {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
-            // end options for devappserver
 
             myApiService = builder.build();
         }

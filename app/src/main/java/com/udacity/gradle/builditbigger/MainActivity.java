@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.julia.android.jokesviewer.JokesViewerActivity;
 
@@ -14,10 +15,14 @@ import static com.julia.android.jokesviewer.JokesViewerActivity.EXTRA_JOKE;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ProgressBar mSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSpinner = (ProgressBar) findViewById(R.id.progressBar);
     }
 
 
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
 
+        mSpinner.setVisibility(View.VISIBLE);
+
         new FetchJokeTask(new FetchJokeTask.Listener() {
 
             @Override
@@ -53,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent sendIntent = new Intent(getApplicationContext(), JokesViewerActivity.class);
                 sendIntent.putExtra(EXTRA_JOKE, joke);
                 startActivity(sendIntent);
+                mSpinner.setVisibility(View.INVISIBLE);
             }
 
         }).execute();

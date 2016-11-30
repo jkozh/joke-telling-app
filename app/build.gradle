@@ -11,11 +11,21 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // Enabling multidex support.
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            applicationId "com.udacity.gradle.builditbigger"
         }
     }
 }
@@ -28,7 +38,7 @@ dependencies {
     compile project(path: ':jokes-lib')
     compile project(path: ':jokesviewer')
     compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.google.android.gms:play-services-ads:10.0.0'
+    freeCompile 'com.google.android.gms:play-services-ads:10.0.0'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }

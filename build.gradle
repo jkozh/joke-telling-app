@@ -18,10 +18,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
 task startServer(dependsOn: ":backend:appengineRun")
 
 task runAndroidTests(dependsOn: ":app:connectedAndroidTest")
